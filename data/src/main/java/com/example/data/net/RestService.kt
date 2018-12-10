@@ -1,13 +1,10 @@
 package com.gmail.name.data.net
 
-import android.util.Log
 import com.example.data.entity.WordRequest
 import com.example.data.utils.Transformer
 import com.example.domain.entity.Word
 import com.google.gson.Gson
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,8 +38,8 @@ class RestService(apiUrl: String) {
     fun getTranslate(wordPL: String): Observable<Word>? {
         val wordRequest = WordRequest(wordPL)
         return restApi.getTranslate(wordRequest.key,wordRequest.lang, wordRequest.wordPL)
-                ?.observeOn(Schedulers.computation())
-                ?.subscribeOn(Schedulers.io())
+//                ?.observeOn(Schedulers.computation())
+//                ?.subscribeOn(Schedulers.io())
                 ?.map { Transformer.transformResponseToDomain(wordPL,it)}
     }
 }

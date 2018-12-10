@@ -1,7 +1,6 @@
 package com.example.lena.finalapp.presentation.base.recycler
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import com.gmail.superarch.presentation.base.recycler.BaseItemViewModel
 import com.gmail.superarch.presentation.base.recycler.BaseViewHolder
 import com.gmail.superarch.presentation.base.recycler.ItemClick
@@ -16,7 +15,6 @@ abstract class BaseRecyclerAdapter<
     val clickItemSubject = PublishSubject.create<ItemClick<Entity>>()
 
     override fun onBindViewHolder(holder: BaseViewHolder<Entity, VM, *>, position: Int) {
-        Log.e("aaa", "BaseRecyclerAdapter onBindViewHolder:")
         holder.bind(itemList[position], position)
     }
 
@@ -39,7 +37,6 @@ abstract class BaseRecyclerAdapter<
     fun addItems(items: List<Entity>) {
         val startPos = itemList.size
         itemList.addAll(items)
-        Log.e("aaa", "BaseRecyclerAdapter addItems: $itemList")
         notifyItemRangeChanged(startPos, items.size)
     }
 

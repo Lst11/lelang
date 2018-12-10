@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gmail.superarch.presentation.screen.student.list.items.WordItemViewModel" />
+            type="com.example.lena.finalapp.presentation.screen.favorite.items.WordFavItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

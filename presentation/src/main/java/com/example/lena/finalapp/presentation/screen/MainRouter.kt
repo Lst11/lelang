@@ -8,7 +8,6 @@ import com.example.lena.finalapp.presentation.base.BaseRouter
 class MainRouter(activity: MainActivity) : BaseRouter<MainActivity>(activity) {
 
     fun goToMenuItem(selectedFragment: Fragment) {
-
         val fragmentTransition = activity.supportFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.container, selectedFragment)
         fragmentTransition.commit()

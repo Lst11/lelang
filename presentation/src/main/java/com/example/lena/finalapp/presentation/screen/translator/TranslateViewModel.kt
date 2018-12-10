@@ -6,7 +6,7 @@ import android.view.View
 import com.example.domain.usecases.GetTranslateUseCase
 import com.example.lena.finalapp.presentation.base.BaseViewModel
 import com.example.lena.finalapp.presentation.screen.MainRouter
-import com.example.lena.finalapp.presentation.screen.translator.items.WordListAdapter
+import com.example.lena.finalapp.presentation.screen.translator.items.WordItemAdapter
 import com.gmail.superarch.app.App
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
@@ -18,8 +18,7 @@ class TranslateViewModel : BaseViewModel<MainRouter>() {
 
     var wordPl = ObservableField<String>("")
 
-    //    var adapter = WordItemAdapter()
-    val adapter = WordListAdapter()
+    var adapter = WordItemAdapter()
 
     init {
         App.appComponent.inject(this)
@@ -32,9 +31,8 @@ class TranslateViewModel : BaseViewModel<MainRouter>() {
                     ?.subscribeBy(
                             onNext = {
                                 Log.e("aaa", "TranslateViewModel - translated onNext: " + it.toString())
-                                adapter.setData(it.wordRU)
+                                adapter.addItems(it.wordRU)
                                 adapter.notifyDataSetChanged()
-//                                adapter.addItems(it.wordRU.toList())
                             },
                             onError = {
                                 Log.e("aaa", "TranslateViewModel - translated onError: " + it.toString())
@@ -46,5 +44,6 @@ class TranslateViewModel : BaseViewModel<MainRouter>() {
     fun onClickDelete(v: View) {
         Log.e("aaa", "TranslateViewModel onClickDelete")
         wordPl.set("")
+        adapter.cleanItems()
     }
 }

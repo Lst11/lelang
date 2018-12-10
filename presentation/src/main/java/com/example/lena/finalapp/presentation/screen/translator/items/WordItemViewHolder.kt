@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.lena.finalapp.databinding.ItemWordTranslatedBinding
 import com.gmail.superarch.presentation.base.recycler.BaseViewHolder
-import com.gmail.superarch.presentation.screen.student.list.items.WordItemViewModel
+import com.example.lena.finalapp.presentation.screen.favorite.items.WordItemViewModel
 
 class WordItemViewHolder(binding: ItemWordTranslatedBinding,
                          viewModel: WordItemViewModel)

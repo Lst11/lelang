@@ -1,10 +1,9 @@
-package com.gmail.superarch.presentation.screen.student.list.items
+package com.example.lena.finalapp.presentation.screen.favorite.items
 
 import android.databinding.ObservableField
-import android.util.Log
 import com.gmail.superarch.presentation.base.recycler.BaseItemViewModel
 
-class WordItemViewModel : BaseItemViewModel<String>() {
+class WordFavItemViewModel : BaseItemViewModel<String>() {
 
     val wordRU = ObservableField<String>("")
 
