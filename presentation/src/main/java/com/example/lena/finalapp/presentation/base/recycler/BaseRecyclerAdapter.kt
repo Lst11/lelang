@@ -1,6 +1,10 @@
-package com.gmail.superarch.presentation.base.recycler
+package com.example.lena.finalapp.presentation.base.recycler
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import com.gmail.superarch.presentation.base.recycler.BaseItemViewModel
+import com.gmail.superarch.presentation.base.recycler.BaseViewHolder
+import com.gmail.superarch.presentation.base.recycler.ItemClick
 import io.reactivex.subjects.PublishSubject
 
 abstract class BaseRecyclerAdapter<
@@ -12,28 +16,17 @@ abstract class BaseRecyclerAdapter<
     val clickItemSubject = PublishSubject.create<ItemClick<Entity>>()
 
     override fun onBindViewHolder(holder: BaseViewHolder<Entity, VM, *>, position: Int) {
+        Log.e("aaa", "BaseRecyclerAdapter onBindViewHolder:")
         holder.bind(itemList[position], position)
     }
 
     override fun getItemCount(): Int = itemList.size
 
-    fun addItems(items: List<Entity>) {
-        val startPos = itemList.size
-        itemList.addAll(items)
-        notifyItemRangeChanged(startPos, items.size)
-    }
-
-    fun clearItems() {
-        itemList.clear()
-        notifyDataSetChanged()
-    }
-
     override fun onViewAttachedToWindow(holder: BaseViewHolder<Entity, VM, *>) {
         super.onViewAttachedToWindow(holder)
-
         holder.itemView.setOnClickListener {
-            val pos = holder.adapterPosition
-            clickItemSubject.onNext(ItemClick(itemList[pos], pos))
+            val position = holder.adapterPosition
+            clickItemSubject.onNext(ItemClick(itemList[position], position))
             holder.viewModel.onItemClick()
         }
     }
@@ -42,4 +35,17 @@ abstract class BaseRecyclerAdapter<
         super.onViewDetachedFromWindow(holder)
         holder.itemView.setOnClickListener(null)
     }
+
+    fun addItems(items: List<Entity>) {
+        val startPos = itemList.size
+        itemList.addAll(items)
+        Log.e("aaa", "BaseRecyclerAdapter addItems: $itemList")
+        notifyItemRangeChanged(startPos, items.size)
+    }
+
+    fun cleanItems() {
+        itemList.clear()
+        notifyDataSetChanged()
+    }
+
 }

@@ -7,11 +7,10 @@
 
         <variable
             name="viewModel"
-            type="com.gmail.superarch.presentation.screen.student.list.items.WordTranslatedItemViewModel" />
+            type="com.gmail.superarch.presentation.screen.student.list.items.WordItemViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,11 +20,12 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:padding="5sp"
-            android:text="@{viewModel.wordRU}"
+
             app:layout_constraintEnd_toStartOf="@+id/imageStar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageStar" />
         <!--app:layout_constraintWidth_percent="0.9"-->
+        <!--android:text="@{viewModel.wordRU}"-->
 
         <ImageView
             android:id="@+id/imageStar"

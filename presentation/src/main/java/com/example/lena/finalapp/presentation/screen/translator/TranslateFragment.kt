@@ -2,11 +2,13 @@ package com.example.lena.finalapp.presentation.screen.translator
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
+import android.view.View
 import com.example.lena.finalapp.R
 import com.example.lena.finalapp.databinding.FragmentTranslateBinding
 import com.example.lena.finalapp.presentation.base.BaseMvvmFragment
 import com.example.lena.finalapp.presentation.screen.MainRouter
-import com.gmail.superarch.app.App
 
 class TranslateFragment : BaseMvvmFragment<TranslateViewModel, MainRouter, FragmentTranslateBinding>() {
 
@@ -19,6 +21,20 @@ class TranslateFragment : BaseMvvmFragment<TranslateViewModel, MainRouter, Fragm
         return R.layout.fragment_translate
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerView.adapter = viewModel.adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
+        binding.recyclerView.setHasFixedSize(true)
+        Log.e("aaa","TranslateFragment - added adapter" )
+
+//        RxTextView.textChanges(binding.searchEditText)
+//                .throttleFirst(500, TimeUnit.MILLISECONDS)
+//                .subscribeBy{
+//                    viewModel.search(it.toString())
+//                }
+    }
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        App.appComponent.inject(this)
 //        super.onCreate(savedInstanceState)
