@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gmail.superarch.presentation.screen.student.list.items.WordItemViewModel" />
+            type="com.example.lena.finalapp.presentation.screen.translator.items.WordItemViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -24,18 +24,16 @@
             app:layout_constraintEnd_toStartOf="@+id/imageStar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageStar" />
-        <!--app:layout_constraintWidth_percent="0.9"-->
-
 
         <ImageView
             android:id="@+id/imageStar"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:layout_margin="5sp"
-            android:clickable="true"
+            android:onClick="@{(v)->viewModel.onItemClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_star_border_24dp" />
+            app:srcCompat="@{viewModel.isPressed}" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

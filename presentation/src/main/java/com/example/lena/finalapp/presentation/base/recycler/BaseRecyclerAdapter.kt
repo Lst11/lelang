@@ -1,7 +1,6 @@
 package com.example.lena.finalapp.presentation.base.recycler
 
 import android.support.v7.widget.RecyclerView
-import com.gmail.superarch.presentation.base.recycler.BaseItemViewModel
 import com.gmail.superarch.presentation.base.recycler.BaseViewHolder
 import com.gmail.superarch.presentation.base.recycler.ItemClick
 import io.reactivex.subjects.PublishSubject
@@ -15,7 +14,7 @@ abstract class BaseRecyclerAdapter<
     val clickItemSubject = PublishSubject.create<ItemClick<Entity>>()
 
     override fun onBindViewHolder(holder: BaseViewHolder<Entity, VM, *>, position: Int) {
-        holder.bind(itemList[position], position)
+        holder.bind(itemList[position], position, true)
     }
 
     override fun getItemCount(): Int = itemList.size

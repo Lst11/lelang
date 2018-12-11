@@ -24,6 +24,7 @@ class DomainModule(private val context: Context) {
 
 
     @Provides
+    @Singleton
     fun provideWordsRepository(restService: RestService)
             : WordsRepository = WordsRepositoryImpl(restService)
 

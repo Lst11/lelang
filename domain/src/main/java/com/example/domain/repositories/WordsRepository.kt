@@ -7,8 +7,8 @@ import io.reactivex.Observable
 interface WordsRepository : BaseRepository {
 
 //    fun get(wordPL: String): Observable<Word>
-//
-//    fun getAll(): Observable<List<Word>>
+
+    fun getAll(): Observable<List<Word>>?
 
     fun getTranslate(wordPL: String): Observable<Word>?
 

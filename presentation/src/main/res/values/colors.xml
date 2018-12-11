@@ -7,7 +7,7 @@
     <color name="blue">#a1d7e2</color>
     <color name="green">#a2e199</color>
     <color name="red">#efacad</color>
-    <color name="recyclerBackground">#190004fc</color>
+    <color name="primaryColorTransparent25">#190004fc</color>
     <color name="gray">#fa595959</color>
     <color name="grayTransparent50">#32595959</color>
     <color name="grayTransparent100">#64595959</color>

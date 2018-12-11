@@ -12,30 +12,30 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+
+
+        <TextView
+            android:id="@+id/letterTextView"
+            style="@style/text_bold"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:visibility="@{viewModel.visability}"
+            android:text="@{viewModel.letter}" />
 
         <TextView
             android:id="@+id/wordTextView"
             style="@style/text_normal"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:padding="5sp"
-            android:text="@{viewModel.wordRU}"
-            app:layout_constraintEnd_toStartOf="@+id/imageStar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageStar" />
-        <!--app:layout_constraintWidth_percent="0.9"-->
-
-
-        <ImageView
-            android:id="@+id/imageStar"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
-            android:layout_margin="5sp"
-            android:clickable="true"
+            android:layout_marginStart="10sp"
+            android:text="@{viewModel.wordPL}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_star_border_24dp" />
+            app:layout_constraintStart_toEndOf="@+id/letterTextView"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

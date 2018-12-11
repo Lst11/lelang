@@ -7,13 +7,13 @@
         android:title="TRANSLATOR" />
 
     <item
-        android:id="@+id/allWordsButton"
-        android:icon="@drawable/ic_book_24dp"
-        android:title="ALL WORDS" />
-
-    <item
         android:id="@+id/favoriteWordsButton"
         android:icon="@drawable/ic_star_border_24dp"
         android:title="FAVORITE" />
+
+    <item
+        android:id="@+id/allWordsButton"
+        android:icon="@drawable/ic_book_24dp"
+        android:title="ALL WORDS" />
 
 </menu>

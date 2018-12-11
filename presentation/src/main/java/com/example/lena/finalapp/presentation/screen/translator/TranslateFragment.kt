@@ -23,23 +23,10 @@ class TranslateFragment : BaseMvvmFragment<TranslateViewModel, MainRouter, Fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.recyclerView.adapter = viewModel.adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
         binding.recyclerView.setHasFixedSize(true)
-        Log.e("aaa","TranslateFragment - added adapter" )
-
-//        RxTextView.textChanges(binding.searchEditText)
-//                .throttleFirst(500, TimeUnit.MILLISECONDS)
-//                .subscribeBy{
-//                    viewModel.search(it.toString())
-//                }
     }
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        App.appComponent.inject(this)
-//        super.onCreate(savedInstanceState)
-//    }
-
 }
 
 
