@@ -6,13 +6,16 @@ import io.reactivex.Observable
 
 interface WordsRepository : BaseRepository {
 
-//    fun get(wordPL: String): Observable<Word>
+    fun getTranslate(wordPL: String): Observable<Word>?
 
     fun getAll(): Observable<List<Word>>?
 
-    fun getTranslate(wordPL: String): Observable<Word>?
+    fun add(word: Word): Completable?
 
-//    fun add(wordPL: String): Completable
-//
+
+
+
+//    fun get(wordPL: String): Observable<Word>
+
 //    fun remove(wordPL: String): Completable
 }

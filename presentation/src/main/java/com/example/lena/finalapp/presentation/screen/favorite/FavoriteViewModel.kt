@@ -31,6 +31,6 @@ class FavoriteViewModel : BaseViewModel<MainRouter>() {
                     Log.e("aaa", "TranslateViewModel - translated onError: " + it.toString())
                     router?.showError(it)
                 })
-        adapter.notifyDataSetChanged()
+        addToDisposable(disposable)
     }
 }

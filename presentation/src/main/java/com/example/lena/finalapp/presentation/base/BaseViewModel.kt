@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseViewModel<R : BaseRouter<*>>: ViewModel() {
+abstract class BaseViewModel<R : BaseRouter<*>> : ViewModel() {
 
     protected var router: R? = null
 
@@ -20,8 +20,10 @@ abstract class BaseViewModel<R : BaseRouter<*>>: ViewModel() {
         this.router = null
     }
 
-    protected fun addToDisposable(disposable: Disposable) {
-        compositeDisposable.add(disposable)
+    protected fun addToDisposable(disposable: Disposable?) {
+        if (disposable != null) {
+            compositeDisposable.add(disposable)
+        }
     }
 
     override fun onCleared() {

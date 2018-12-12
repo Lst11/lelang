@@ -1,31 +1,31 @@
 package com.example.data.repositories
 
 import android.util.Log
+import com.example.data.db.dao.WordDao
+import com.example.data.utils.Transformer
 import com.example.domain.entity.Word
 import com.example.domain.repositories.WordsRepository
 import com.gmail.name.data.net.RestService
+import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
+import transformToDomain
+import javax.inject.Inject
 
-class WordsRepositoryImpl(private val restService: RestService) : WordsRepository {
-
-    val list: MutableList<Word> = mutableListOf(
-            Word("cześć", mutableListOf("привет")),
-            Word("chętnie", mutableListOf("охотно")),
-            Word("cwiczenie", mutableListOf("упражнение")),
-            Word("proszę", mutableListOf("прошу", "пожалуйста")),
-            Word("prosty", mutableListOf("обычный", "простой")),
-            Word("tak", mutableListOf("да")),
-            Word("oczewiście", mutableListOf("конечно", "очевидно")),
-            Word("nie", mutableListOf("нет")),
-            Word("drobiazg", mutableListOf("мелочь")),
-            Word("świetnie", mutableListOf("прекрасно")),
-            Word("spoko", mutableListOf("спокойно")),
-            Word("zły", mutableListOf("злой")),
-            Word("kotek", mutableListOf("кот")))
+class WordsRepositoryImpl @Inject constructor(val restService: RestService,
+                                              val wordDao: WordDao) : WordsRepository {
 
     override fun getTranslate(wordPL: String): Observable<Word>? {
         Log.e("aaa", "WordsRepositoryImpl : getTranslate + $wordPL")
         return restService.getTranslate(wordPL)
+    }
+
+    fun saveAll() {
+        val list = WordsListSingleton.list
+        list.forEach {
+            val wordDB = Transformer.transformDomainToDB(it)
+            wordDao.insert(wordDB)
+        }
     }
 
 //    override fun get(wordPL: String): Observable<Word> {
@@ -33,22 +33,38 @@ class WordsRepositoryImpl(private val restService: RestService) : WordsRepositor
 //        return get(wordPL)
 //    }
 
-    override fun getAll(): Observable<List<Word>> {
-
-
-        return Observable.just(list)
+    override fun getAll(): Observable<List<Word>>? {
+        return wordDao.getAll()
+                .flatMap { list ->
+                    Flowable.just(list).map {
+                        it.map {
+                            it.transformToDomain()
+                        }
+                    }
+                }
+                .toObservable()
     }
 
+    override fun add(word: Word): Completable? {
+        return Completable.fromAction {
+            wordDao.insert(Transformer.transformDomainToDB(word))
+        }
+    }
 
-//    override fun add(wordPL: String): Completable {
-//        //FIXME работа с БД
-////        return add(wordPL)
-//        return Completable.complete()
+//    return wordDao.getAll()
+//                .flatMap { list ->
+//        Observable.just(list)
+//                .map {
+//                    it.map {
+//                        it.transformToDomain()
+//                    }
+//                }
 //    }
-//
+
 //    override fun remove(wordPL: String): Completable {
 //        //FIXME работа с БД
 ////        return deletePerson(wordPL)
 //        return Completable.complete()
 //    }
 }
+

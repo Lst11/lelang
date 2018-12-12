@@ -1,7 +1,9 @@
-//package com.example.data.entity
-//
-//import com.gmail.name.domain.entity.Person
-//
-//fun PersonResponse.transformToDomain(): Person {
-//    return Person(id = id, name = name, surname = surname, imageUrl = imageUrl)
-//}
+import com.example.data.db.entity.WordDB
+import com.example.data.utils.Transformer
+import com.example.domain.entity.Word
+
+fun WordDB.transformToDomain(): Word {
+    return Word(wordPL = wordPL, wordRU = wordRU.toMutableList())
+}
+
+
