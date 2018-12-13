@@ -20,4 +20,7 @@ class WordItemViewHolder(binding: ItemWordTranslatedBinding,
             return WordItemViewHolder(binding, viewModel)
         }
     }
+
+
+
 }

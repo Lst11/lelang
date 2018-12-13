@@ -12,10 +12,10 @@ interface WordsRepository : BaseRepository {
 
     fun add(word: Word): Completable?
 
-
+    fun remove(word: Word): Completable?
 
 
 //    fun get(wordPL: String): Observable<Word>
 
-//    fun remove(wordPL: String): Completable
+
 }

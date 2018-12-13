@@ -16,4 +16,7 @@ interface WordDao {
     @Query("SELECT * FROM word  ORDER BY wordPL")
     fun getAll(): Flowable<List<WordDB>>
 
+    @Query("DELETE FROM word WHERE wordPL=:wordPL")
+    fun deleteByWordPL(wordPL: String)
+
 }

@@ -23,12 +23,12 @@ class FavoriteViewModel : BaseViewModel<MainRouter>() {
         App.appComponent.inject(this)
         var disposable = getWordsUseCase.getAll()?.subscribeBy(
                 onNext = {
-                    Log.e("aaa", "TranslateViewModel - translated onNext: " + it.toString())
+                    Log.e("aaa", "FavoriteViewModel - translated onNext: " + it.toString())
                     adapter.addItems(it)
                     adapter.notifyDataSetChanged()
                 },
                 onError = {
-                    Log.e("aaa", "TranslateViewModel - translated onError: " + it.toString())
+                    Log.e("aaa", "FavoriteViewModel - translated onError: " + it.toString())
                     router?.showError(it)
                 })
         addToDisposable(disposable)

@@ -46,10 +46,20 @@ class WordsRepositoryImpl @Inject constructor(val restService: RestService,
     }
 
     override fun add(word: Word): Completable? {
-        return Completable.fromAction {
-            wordDao.insert(Transformer.transformDomainToDB(word))
-        }
+        Log.e("aaa", "WordsRepositoryImpl : added ${word.wordPL} - ${word.wordRU} ")
+        wordDao.insert(Transformer.transformDomainToDB(word))
+        return Completable.complete()
     }
+
+
+
+    override fun remove(word: Word): Completable? {
+        Log.e("aaa", "WordsRepositoryImpl : removed ${word.wordPL} - ${word.wordRU} ")
+        wordDao.deleteByWordPL(word.wordPL)
+        return Completable.complete()
+    }
+
+}
 
 //    return wordDao.getAll()
 //                .flatMap { list ->
@@ -60,11 +70,4 @@ class WordsRepositoryImpl @Inject constructor(val restService: RestService,
 //                    }
 //                }
 //    }
-
-//    override fun remove(wordPL: String): Completable {
-//        //FIXME работа с БД
-////        return deletePerson(wordPL)
-//        return Completable.complete()
-//    }
-}
 
