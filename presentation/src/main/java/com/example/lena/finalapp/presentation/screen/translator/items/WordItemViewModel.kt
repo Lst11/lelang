@@ -7,7 +7,6 @@ import android.util.Log
 import com.example.lena.finalapp.presentation.base.recycler.BaseItemViewModel
 import com.gmail.superarch.app.App
 
-
 class WordItemViewModel : BaseItemViewModel<String>() {
 
     val wordRU = ObservableField<String>("")
@@ -16,34 +15,23 @@ class WordItemViewModel : BaseItemViewModel<String>() {
 
     override fun bindItem(item: String, position: Int, isUnique: Boolean) {
         wordRU.set(item)
-        Log.e("aaa", "WordItemViewModel: bindItem() - isPressed:$isPressed ")
+        isPressed.set(false)
     }
 
     override fun onItemClick() {
         if (clickCounter++ % 2 == 0) {
             isPressed.set(true)
-            sendMessageSave()
+            sendMessage("CLICK_SAVE")
         } else {
             isPressed.set(false)
-            sendMessageRemove()
+            sendMessage("CLICK_REMOVE")
         }
-        Log.e("aaa", "WordItemViewModel: onItemClick() isPressed:$isPressed ")
-
     }
 
-
-    private fun sendMessageSave() {
-        Log.d("aaa", "Broadcasting message")
-        val intent = Intent("clickSave")
+    private fun sendMessage(action: String) {
+        Log.d("aaa", "Broadcasting: $action")
+        val intent = Intent(action)
         intent.putExtra("message", wordRU.get())
         LocalBroadcastManager.getInstance(App.instance.baseContext).sendBroadcast(intent)
     }
-
-    private fun sendMessageRemove() {
-        Log.d("aaa", "Broadcasting message")
-        val intent = Intent("clickRemove")
-        intent.putExtra("message", wordRU.get())
-        LocalBroadcastManager.getInstance(App.instance.baseContext).sendBroadcast(intent)
-    }
-
 }

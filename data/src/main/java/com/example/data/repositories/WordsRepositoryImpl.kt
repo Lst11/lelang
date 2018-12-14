@@ -17,7 +17,9 @@ class WordsRepositoryImpl @Inject constructor(val restService: RestService,
 
     override fun getTranslate(wordPL: String): Observable<Word>? {
         Log.e("aaa", "WordsRepositoryImpl : getTranslate + $wordPL")
-        return restService.getTranslate(wordPL)
+        val newWord = Word("aaa", mutableListOf("bbb", "ccc", "ddd", "eee", "jjj", "ggg", "hhh", "lll", "kkk"))
+//        return restService.getTranslate(wordPL)
+        return Observable.just(newWord)
     }
 
     fun saveAll() {
@@ -50,7 +52,6 @@ class WordsRepositoryImpl @Inject constructor(val restService: RestService,
         wordDao.insert(Transformer.transformDomainToDB(word))
         return Completable.complete()
     }
-
 
 
     override fun remove(word: Word): Completable? {

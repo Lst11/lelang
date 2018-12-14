@@ -19,6 +19,7 @@ import com.gmail.superarch.app.App
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
+
 class TranslateViewModel : BaseViewModel<MainRouter>() {
 
     @Inject
@@ -38,12 +39,16 @@ class TranslateViewModel : BaseViewModel<MainRouter>() {
             val wordFromMessage = intent.getStringExtra("message")
             Log.d("aaa", "TranslateViewModel got message: $wordFromMessage")
 
-            if (wordFromMessage.equals("clickSave")) {
+            if (intent.action.equals("CLICK_SAVE")) {
+                Log.d("aaa", "TranslateViewModel clickSave")
                 wordsRU.add(wordFromMessage)
                 addWordUseCase.add(Word(wordPl.get() ?: "", wordsRU))
-            } else if (wordFromMessage.equals("clickRemove")) {
+
+            } else if (intent.action.equals("CLICK_REMOVE")) {
+                Log.d("aaa", "TranslateViewModel clickRemove")
                 wordsRU.remove(wordFromMessage)
                 removeWordUseCase.remove(Word(wordPl.get() ?: "", wordsRU))
+                if (wordsRU.isNotEmpty()) addWordUseCase.add(Word(wordPl.get() ?: "", wordsRU))
             }
         }
     }
@@ -55,10 +60,9 @@ class TranslateViewModel : BaseViewModel<MainRouter>() {
         val intentFilter = IntentFilter()
         App.appComponent.inject(this)
         Log.d("aaa", "TranslateViewModel - added filters")
-        intentFilter.addAction("clickSave")
-        intentFilter.addAction("clickRemove")
-        val receiver = LocalBroadcastManager.getInstance(App.instance.baseContext).registerReceiver(broadcastReceicer, IntentFilter())
-//        registerReceiver(myBroadcastReceicer, intentFilter)
+        intentFilter.addAction("CLICK_SAVE")
+        intentFilter.addAction("CLICK_REMOVE")
+        LocalBroadcastManager.getInstance(App.instance.baseContext).registerReceiver(broadcastReceicer, intentFilter)
     }
 
     fun onClickTranslate(v: View) {

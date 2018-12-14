@@ -1,6 +1,7 @@
 package com.example.lena.finalapp.presentation.base.recycler
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import com.gmail.superarch.presentation.base.recycler.BaseViewHolder
 import com.gmail.superarch.presentation.base.recycler.ItemClick
 import io.reactivex.subjects.PublishSubject
@@ -21,11 +22,11 @@ abstract class BaseRecyclerAdapter<
 
     override fun onViewAttachedToWindow(holder: BaseViewHolder<Entity, VM, *>) {
         super.onViewAttachedToWindow(holder)
-        holder.itemView.setOnClickListener {
-            val position = holder.adapterPosition
-            clickItemSubject.onNext(ItemClick(itemList[position], position))
-            holder.viewModel.onItemClick()
-        }
+//        holder.itemView.setOnClickListener {
+//            val position = holder.adapterPosition
+//            clickItemSubject.onNext(ItemClick(itemList[position], position))
+////            holder.viewModel.onItemClick()
+//        }
     }
 
     override fun onViewDetachedFromWindow(holder: BaseViewHolder<Entity, VM, *>) {

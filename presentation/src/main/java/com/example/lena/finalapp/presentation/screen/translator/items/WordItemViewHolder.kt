@@ -1,6 +1,5 @@
 package com.example.lena.finalapp.presentation.screen.translator.items
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.lena.finalapp.databinding.ItemWordTranslatedBinding
@@ -16,7 +15,6 @@ class WordItemViewHolder(binding: ItemWordTranslatedBinding,
         fun create(parent: ViewGroup,
                    viewModel: WordItemViewModel): WordItemViewHolder {
             val binding = ItemWordTranslatedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            Log.e("aaa","WordItemViewHolder - created view holder" )
             return WordItemViewHolder(binding, viewModel)
         }
     }

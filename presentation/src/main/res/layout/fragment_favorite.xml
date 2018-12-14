@@ -18,8 +18,8 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_recycler_view"
-            android:padding="10sp" />
+            android:background="@drawable/rounded_recycler_view" />
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>
