@@ -34,4 +34,6 @@ class WordItemViewModel : BaseItemViewModel<String>() {
         intent.putExtra("message", wordRU.get())
         LocalBroadcastManager.getInstance(App.instance.baseContext).sendBroadcast(intent)
     }
+
+
 }

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">finalApp</string>
+    <string name="menu_translator">TRANSLATOR</string>
+    <string name="menu_favorite">FAVORITE</string>
+    <string name="menu_all_words">ALL WORDS</string>
+    <string name="remove">Удалить</string>
+    <string name="dialog_word">Вы хотите удалить слово?</string>
+    <string name="cancel">Отмена</string>
+
 </resources>

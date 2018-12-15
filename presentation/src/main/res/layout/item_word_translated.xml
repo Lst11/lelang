@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.lena.finalapp.presentation.screen.translator.items.WordItemViewModel" />
@@ -27,8 +26,8 @@
 
         <ImageView
             android:id="@+id/imageStar"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="@dimen/height_button"
             android:layout_margin="5sp"
             android:onClick="@{(v)->viewModel.onItemClick()}"
             app:layout_constraintEnd_toEndOf="parent"
