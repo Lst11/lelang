@@ -1,0 +1,5 @@
+You could use this application for translating new polish words, adding all or few of their translation to your own dictionary (or you can download the based dictionary from the server) and start your exiting learning them.
+
+There are three modules: presentation, domain and data. In presentation module I've created the user interface and the Application class, introduce dependencies. In that module I had used rxjava, rxkotlin, data binding, dagger. In domain module I had created all the entities, that I want to use in presentation, made repository interface and usecases. There are rxjava and rxkotlin libraries too. In data module make possible to interaction with local databases, I had created entities, dao interface, which implement the repository. In that module I had added room database.
+
+Currently project is in development. Soon I'm going to change the UI and add the work with service for dictionaries and add some games for making learning more exciting.
