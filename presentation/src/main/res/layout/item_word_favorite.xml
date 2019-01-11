@@ -23,8 +23,8 @@
             android:layout_height="40sp"
             android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:visibility="@{viewModel.visability}"
-            android:text="@{viewModel.letter}" />
+            android:text="@{viewModel.letter}"
+            android:visibility="@{viewModel.visability}" />
 
         <TextView
             android:id="@+id/wordTextView"
@@ -36,6 +36,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/letterTextView"
             app:layout_constraintTop_toTopOf="parent" />
+        <!--android:onLongClick="@{viewModel::onLongItemClick}"-->
+        <!--android:longClickable="true"-->
+        <!--android:clickable="true"-->
+        <!--android:onLongClick="@{() -> viewModel.onLongItemClick()}"-->
 
     </android.support.constraint.ConstraintLayout>
 </layout>

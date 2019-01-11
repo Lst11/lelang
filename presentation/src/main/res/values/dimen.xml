@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_button">30dp</dimen>
+    <dimen name="width_button">30sp</dimen>
+    <dimen name="fragment_padding">30sp</dimen>
+</resources>
